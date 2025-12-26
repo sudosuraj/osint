@@ -924,7 +924,7 @@ function createAccordion(title, data, open = false) {
 }
 
 // ==================== Hash Tools ====================
-function generateHashes() {
+async function generateHashes() {
     const input = document.getElementById('hashInput').value;
     if (!input) {
         showToast('Please enter text to hash', 'error');
@@ -933,9 +933,9 @@ function generateHashes() {
     
     const hashes = [
         { type: 'MD5', value: md5(input) },
-        { type: 'SHA-1', value: sha1(input) },
-        { type: 'SHA-256', value: sha256(input) },
-        { type: 'SHA-512', value: sha512(input) },
+        { type: 'SHA-1', value: await sha1(input) },
+        { type: 'SHA-256', value: await sha256(input) },
+        { type: 'SHA-512', value: await sha512(input) },
         { type: 'Base64', value: btoa(unescape(encodeURIComponent(input))) }
     ];
     
